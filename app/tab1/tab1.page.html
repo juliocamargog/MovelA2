@@ -1,0 +1,124 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-title>
+      COVID 19
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-app>
+  <ion-content fullscreen class="ion-padding">
+      <div padding class="menu">
+        <ion-segment [(ngModel)]="segment">
+          <ion-segment-button value="oQ">
+            O que é
+          </ion-segment-button>
+          <ion-segment-button  value="Sintomas">
+            Sintomas
+          </ion-segment-button>
+          <ion-segment-button value="Prevencao">
+            Prevenção
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+    
+      <div [ngSwitch]="segment">
+        <ion-list *ngSwitchCase="'oQ'" >
+          <div> 
+            <div class="origem">
+              <ion-img src="assets/icon/coronaApp.png"></ion-img>
+              <br><br>
+              <h5>
+              <ion-text class="origem2">Coronavírus</ion-text><ion-text class="origem3"> é uma família de vírus que causam infecções respiratórias.
+                <br><br> 
+                O novo agente do coronavírus foi descoberto em 31/12/19 após casos registrados na China. Provoca a doença chamada de coronavírus (COVID-19).
+                <br><br>
+                Os primeiros coronavírus humanos foram isolados pela primeira vez em 1937. No entanto, foi em 1965 que o vírus foi descrito como coronavírus, em decorrência do perfil na microscopia, parecendo uma coroa.
+                <br><br>
+                A maioria das pessoas se infecta com os coronavírus comuns ao longo da vida, sendo as crianças pequenas mais propensas a se infectarem com o tipo mais comum do vírus. Os coronavírus mais comuns que infectam humanos são o alpha coronavírus 229E e NL63 e beta coronavírus OC43, HKU1.
+                <br><br>
+              </ion-text>
+              </h5>
+            </div>
+            <div class="origem">
+              <ion-text class="origem2">
+                  <h4>Qual a sua origem?</h4>
+              </ion-text>
+                  <br>
+              <ion-text class="origem3">
+                  <h5>Até o momento, ainda não está claro como o novo Coronavírus infectou as pessoas na China. A suspeita, segundo pesquisadores, é de que o vírus que vive no trato respiratório de morcegos tenha passado por um processo de mutação para conseguir se instalar no corpo humano.</h5>
+              </ion-text>
+            </div>
+          </div>
+      </ion-list>
+
+        <ion-list *ngSwitchCase="'Sintomas'" >
+            <div>
+              <div>
+                <div padding class="sintomas">
+                  <h6>A COVID-19 afeta diferentes pessoas de diferentes maneiras.<br><br>
+                  </h6>
+                  <ion-segment>
+                    <ion-segment>
+                      <ion-img class="gif" src="assets/icon/febre.gif"></ion-img>
+                    </ion-segment>
+                    <ion-segment>
+                      <ion-img class="gif" src="assets/icon/tosse.gif"></ion-img>
+                    </ion-segment>
+                    <ion-segment>
+                      <ion-img class="gif" src="assets/icon/cansaco.gif"></ion-img>
+                    </ion-segment>
+                  </ion-segment>
+                </div>
+                <br><br>
+                <ion-text class="sintomas">
+                  <h5 style="font-weight: bolder;color:green">Sintomas mais comuns:</h5>
+                    <h6 style="font-weight: bold;color:green">febre <br>
+                    tosse seca <br>
+                    cansaço</h6>
+                </ion-text>
+                <br>
+                <ion-text class="sintomas">
+                  <h5 style="font-weight: bolder;color:#DF7401">Sintomas menos comuns:</h5>
+                    <h6 style="font-weight: bold;color:#DF7401">dor de garganta<br> 
+                    diarreia<br>
+                    conjutivite<br>
+                    dores e desconfortos<br>
+                    dor de cabeça<br>
+                    perda de paladar ou olfato<br>
+                    erupção cutânea na pela ou descolaração dos dedos das mãos ou dos pés</h6>
+                </ion-text>
+                <br>
+                  <ion-text class="sintomas">
+                    <h5 style="font-weight: bolder;color:red">Sintomas mais graves:</h5>
+                      <h6 style="font-weight: bold;color:red">dificuldade de respirar ou falta de ar<br> 
+                      dor ou pressão no peito<br>
+                      perda de fala ou movimento</h6>
+                  </ion-text>
+              </div>
+            </div>
+        </ion-list>
+    
+        <ion-list *ngSwitchCase="'Prevencao'">
+            <div style="text-align: center;">
+              <br>
+                 <h5>Para evitar a propagação da COVID-19:</h5>
+                 <ion-text><br><br>
+                  <p><ion-icon name="alert-circle-outline"></ion-icon> Lave suas mãos com frequência. Use sabão e água ou um gel à base de álcool.</p>
+                  <p><ion-icon name="alert-circle-outline"></ion-icon> Mantenha uma distância segura de qualquer pessoa que esteja tossindo ou espirrando.</p>
+                  <p><ion-icon name="alert-circle-outline"></ion-icon> Não toque nos olhos, no nariz ou na boca.</p>
+                  <p><ion-icon name="alert-circle-outline"></ion-icon> Quando tossir ou espirrar, cubra o nariz e a boca com o cotovelo dobrado ou um tecido.</p>
+                  <p><ion-icon name="alert-circle-outline"></ion-icon> Fique em casa se você se sentir indisposto.</p>
+                  <p><ion-icon name="alert-circle-outline"></ion-icon> Se você tiver febre, tosse e dificuldade para respirar, procure assistência médica. Ligue antes de sair.</p>
+                  <p><ion-icon name="alert-circle-outline"></ion-icon> Siga as instruções de sua autoridade de saúde local.</p>
+                  <p><ion-icon name="alert-circle-outline"></ion-icon> Evite ir desnecessariamente a clínicas ou hospitais para permitir que os sistemas de saúde operem com mais eficiência, protegendo você e as outras pessoas.</p>
+                </ion-text>  
+            </div>
+        </ion-list>
+      </div>
+    <ion-button class="botaoSair" expand="block" color="danger" (click)="desconectarUsuario()">Sair da conta</ion-button>
+  </ion-content>
+</ion-app>
+
+

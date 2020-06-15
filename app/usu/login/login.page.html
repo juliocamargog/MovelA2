@@ -1,0 +1,21 @@
+<ion-content [fullscreen]="true">
+  <form class="formulario">
+    <ion-item lines="full">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input name="login" type="text" [(ngModel)]="email"></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input name="login" type="password" [(ngModel)]="senha"></ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <ion-button class="botaoLogin" color="dark" type="submit" (click)="loginUsuario()" expand="block">
+          Entrar<ion-icon slot="end" name="walk-outline"></ion-icon>
+        </ion-button>
+        <ion-button class="textocriarConta" color="light" (click)="inserirConta()">Criar conta</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
+

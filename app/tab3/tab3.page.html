@@ -1,0 +1,149 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-title>
+      Gráficos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="ion-padding">
+    <ion-list>
+      <ion-item>
+        <ion-label>Estados</ion-label>
+        <ion-select [(ngModel)]="escolha">
+          <ion-select-option value="ac">Acre</ion-select-option>
+          <ion-select-option value="al">Alagoas</ion-select-option>
+          <ion-select-option value="ap">Amapá</ion-select-option>
+          <ion-select-option value="am">Amazonas</ion-select-option>
+          <ion-select-option value="ba">Bahia</ion-select-option>
+          <ion-select-option value="ce">Ceará</ion-select-option>
+          <ion-select-option value="df">Distrito Federal</ion-select-option>
+          <ion-select-option value="es">Espírito Santo</ion-select-option>
+          <ion-select-option value="go">Goiás</ion-select-option>
+          <ion-select-option value="ma">Maranhão</ion-select-option>
+          <ion-select-option value="mt">Mato Grosso</ion-select-option>
+          <ion-select-option value="ms">Mato Grosso do Sul</ion-select-option>
+          <ion-select-option value="mg">Minas Gerais</ion-select-option>
+          <ion-select-option value="pa">Pará</ion-select-option>
+          <ion-select-option value="pb">Paraíba</ion-select-option>
+          <ion-select-option value="pr">Paraná</ion-select-option>
+          <ion-select-option value="pe">Pernambuco</ion-select-option>
+          <ion-select-option value="pi">Piauí</ion-select-option>
+          <ion-select-option value="rj">Rio de Janeiro</ion-select-option>
+          <ion-select-option value="rn">Rio Grande do Norte</ion-select-option>
+          <ion-select-option value="rs">Rio Grande do Sul</ion-select-option>
+          <ion-select-option value="ro">Rondônia</ion-select-option>
+          <ion-select-option value="rr">Roraima</ion-select-option>
+          <ion-select-option value="sc">Santa Catarina</ion-select-option>
+          <ion-select-option value="sp">São Paulo</ion-select-option>
+          <ion-select-option value="se">Sergipe</ion-select-option>
+          <ion-select-option value="to">Tocantins</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  <div padding>
+    <ion-segment [(ngModel)]="segment" (ionChange)="calc(segment)">
+      <ion-segment-button value="att" (click)="carregaPagina()">
+        Atualizar
+      </ion-segment-button>
+      <ion-segment-button  value="bar">
+        Em Barras
+      </ion-segment-button>
+      <ion-segment-button value="doughnut">
+        Em Pizza
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+ 
+  <div [ngSwitch]="segment">
+    <ion-list *ngSwitchCase="'att'" >
+      <div>
+        <canvas></canvas>
+      </div>
+  </ion-list>
+
+    <ion-list *ngSwitchCase="'bar'" >
+        <div>
+          <canvas baseChart
+                  [datasets]="barChartData"
+                  [labels]="barChartLabels"
+                  [options]="barChartOptions"
+                  [legend]="barChartLegend"
+                  [colors]="barChartColors"
+                  [chartType]="barChartType"></canvas>
+        </div>
+    </ion-list>
+ 
+    <ion-list *ngSwitchCase="'doughnut'">
+            <div width="600" height="800">
+              <div>
+                <canvas baseChart
+                            [data]="doughnutChartData"
+                            [labels]="doughnutChartLabels"
+                            [chartType]="doughnutChartType"></canvas>
+              </div>
+            </div>
+    </ion-list>
+  </div>
+  <div class="texto">
+    <ion-text> 
+      <h3>Total de casos no {{this.state}}: </h3>
+      <ion-label>
+        <br>
+          <ion-icon name="man-outline"></ion-icon> Contaminados: {{this.cases}}
+        <br>
+          <ion-icon name="sad-outline"></ion-icon> Mortes: {{this.deaths}}
+    </ion-label>
+    </ion-text>
+  </div>
+
+  <div class="comparador">
+    <ion-list>
+      Escolher para comparação:
+      <ion-item>
+        <ion-label>Estados</ion-label>
+        <ion-select [(ngModel)]="comparacao">
+          <ion-select-option color="danger" value=" ">Apagar</ion-select-option>
+          <ion-select-option value="ac">Acre</ion-select-option>
+          <ion-select-option value="al">Alagoas</ion-select-option>
+          <ion-select-option value="ap">Amapá</ion-select-option>
+          <ion-select-option value="am">Amazonas</ion-select-option>
+          <ion-select-option value="ba">Bahia</ion-select-option>
+          <ion-select-option value="ce">Ceará</ion-select-option>
+          <ion-select-option value="df">Distrito Federal</ion-select-option>
+          <ion-select-option value="es">Espírito Santo</ion-select-option>
+          <ion-select-option value="go">Goiás</ion-select-option>
+          <ion-select-option value="ma">Maranhão</ion-select-option>
+          <ion-select-option value="mt">Mato Grosso</ion-select-option>
+          <ion-select-option value="ms">Mato Grosso do Sul</ion-select-option>
+          <ion-select-option value="mg">Minas Gerais</ion-select-option>
+          <ion-select-option value="pa">Pará</ion-select-option>
+          <ion-select-option value="pb">Paraíba</ion-select-option>
+          <ion-select-option value="pr">Paraná</ion-select-option>
+          <ion-select-option value="pe">Pernambuco</ion-select-option>
+          <ion-select-option value="pi">Piauí</ion-select-option>
+          <ion-select-option value="rj">Rio de Janeiro</ion-select-option>
+          <ion-select-option value="rn">Rio Grande do Norte</ion-select-option>
+          <ion-select-option value="rs">Rio Grande do Sul</ion-select-option>
+          <ion-select-option value="ro">Rondônia</ion-select-option>
+          <ion-select-option value="rr">Roraima</ion-select-option>
+          <ion-select-option value="sc">Santa Catarina</ion-select-option>
+          <ion-select-option value="sp">São Paulo</ion-select-option>
+          <ion-select-option value="se">Sergipe</ion-select-option>
+          <ion-select-option value="to">Tocantins</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div class="texto2">
+    <ion-text> 
+      <h3>Total de casos no {{this.state2}}: </h3>
+      <ion-label>
+        <br>
+          <ion-icon name="man-outline"></ion-icon> Contaminados: {{this.cases2}}
+        <br>
+          <ion-icon name="sad-outline"></ion-icon> Mortes: {{this.deaths2}}
+      </ion-label>
+    </ion-text>
+  </div>
+</ion-content>

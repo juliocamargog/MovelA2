@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-title>
+      Dados Estaduais
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="ion-padding" slot="fixed">
+ 
+  <ion-list *ngFor="let estado of lista_estados">
+    <ion-item>
+      <ion-label>
+        <ion-text class="estado">{{estado.state}}</ion-text>
+        <br><br>
+      <ion-text class="conteudo">
+        <ion-icon name="man-outline"></ion-icon> Contaminados: {{estado.cases}}
+        <br>
+        <ion-icon name="sad-outline"></ion-icon> Mortes: {{estado.deaths}}
+      </ion-text>
+    </ion-label>
+    </ion-item>
+  </ion-list>
+  
+</ion-content>
+
